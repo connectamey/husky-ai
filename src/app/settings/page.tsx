@@ -49,7 +49,7 @@ const SettingsPage: React.FC<Props> = async () => {
   const freeMessage = (
     <>
       <h2 style={{ marginBottom: '10px' }}>You are currently a Free user.</h2>
-      <p>You're missing out on the full capabilities that our platform offers. Here's what you could be enjoying:</p>
+      <p>You are missing out on the full capabilities that our platform offers. Here is what you could be enjoying:</p>
       {featureList}
       <br />
       <p style={{ marginTop: '10px' }}>Subscribe now to unlock your full potential.</p>
