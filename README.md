@@ -56,8 +56,6 @@ The application is built based on the following technologies.
 - **Styling**: This project uses TailwindCSS for styling. Define custom styles within component classes and extend Tailwind's config in `tailwind.config.js` as needed.
 
 
-Based on the inspection of the `src` directory and its modules, here's a detailed look at what each module within the "husky-ai" project does. It's worth noting that none of the modules contain a `README.md` file with descriptions, so the documentation provided below is inferred from the directory and file names.
-
 ### Modules Overview
 
 #### 1. **app**
