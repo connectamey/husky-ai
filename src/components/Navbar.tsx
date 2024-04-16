@@ -18,6 +18,10 @@ const Navbar = async (props: Props) => {
           </p>
         </Link>
         <div className="flex items-center">
+          <Link href="/docs" className="mr-3">
+            Docs
+          </Link>
+
           <Link href="/gallery" className="mr-3">
             Gallery
           </Link>
