@@ -48,7 +48,7 @@ const Docs = () => {
         </h2>
         <ul className="list-disc pl-6">
         <li><strong>src/</strong>: Contains the source code of the application.
-                <ul className=" list-decimal pl-6">
+                <ul className=" list-decimal pl-6 leading-7">
                         <li><strong>app/</strong>: Core application logic and entry points.</li>
                         <li><strong>components/</strong>: Reusable UI components.</li>
                         <li><strong>lib/</strong>: Shared libraries and utilities.</li>
