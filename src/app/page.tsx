@@ -64,7 +64,7 @@ export default function Home() {
         tailor instruction to individual needs. This enables a more inclusive
         educational approach, accommodating diverse learning styles and
         abilities. Furthermore, AI can automate administrative tasks, allowing
-        teachers to focus more on teaching and less on paperwork. AI's role in
+        teachers to focus more on teaching and less on paperwork. The role of AI in
         creating virtual simulations and educational games also presents
         innovative methods for complex problem-solving and critical thinking,
         making learning more immersive and effective. As AI technology continues

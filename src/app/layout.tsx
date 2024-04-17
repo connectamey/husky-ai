@@ -9,7 +9,7 @@ import { Toaster } from "@/components/ui/toaster";
 const lexend = Lexend({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "AI Learning Platform",
+  title: "Husky AI",
 };
 
 export default function RootLayout({

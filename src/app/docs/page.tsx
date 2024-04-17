@@ -1,5 +1,3 @@
-import GalleryCourseCard from "@/components/GalleryCourseCard";
-import { prisma } from "@/lib/db";
 import React from "react";
 import Head from 'next/head';
 
@@ -24,7 +22,8 @@ const Docs = () => {
         <h2 className="text-2xl font-semibold mt-6 mb-3">Technologies used:</h2>
         <ul className="list-disc pl-6">
           <li>Next.Js</li>
-          <li>Open.ai whisper api</li>
+          <li>Open.ai </li>
+          <li>whisper api</li>
           <li>Vertex api</li>
           <li>Planetscale</li>
         </ul>
