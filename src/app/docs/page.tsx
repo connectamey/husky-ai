@@ -26,6 +26,7 @@ const Docs = () => {
           <li>whisper api</li>
           <li>Vertex api</li>
           <li>Planetscale</li>
+          <li>Pinecone</li>
         </ul>
       </section>
 

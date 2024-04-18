@@ -46,11 +46,12 @@ export default function Home() {
       ></div>
 
       <h1 style={{ fontSize: "48px", fontWeight: "bold", zIndex: 1 }}>
-        Learning AI Platform
+        Husky AI Platform
       </h1>
       <p
         style={{
-          maxWidth: "600px",
+          
+          maxWidth: "1000px",
           textAlign: "center",
           zIndex: 1,
         }}
@@ -73,7 +74,7 @@ export default function Home() {
         increasingly evident.
       </p>
       <Link href="/create">
-        <Button style={{ fontSize: "20px", padding: "10px 20px", zIndex: 1 }}>
+        <Button style={{ fontSize: "20px", padding: "10px 10px", zIndex: 1 }}>
           Create Yours Now
         </Button>
       </Link>
