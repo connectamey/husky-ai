@@ -1,5 +1,4 @@
-// /api/chapter/getInto
-
+import {fetchTranscript} from "@/lib/transcriptService";
 import { prisma } from "@/lib/db";
 import { strict_output } from "@/lib/gpt";
 import {
@@ -34,18 +33,20 @@ export async function POST(req: Request, res: Response) {
     }
 
     const videoId = await searchYoutube(chapter.youtubeSearchQuery);
-  
     let transcript = await getTranscript(videoId);
+    
+    
     let maxLength = 500;
     transcript = transcript.split(" ").slice(0, maxLength).join(" ");
 
+    console.log("VideoID" + videoId);
     const { summary }: { summary: string } = await strict_output(
       "You are an AI capable of summarising a youtube transcript. I should not see unexpected token error in my console when summary is generated. Make sure to adhere to the output format. ",
       "summarise in 250 words or less and do not talk of the sponsors or anything unrelated to the main topic, also do not introduce what the summary is about. Strictly adhere to the format needed. Summarize so that user can grasp the key points about the video\n" +
-        transcript,
+      transcript,
       { summary: "summary of the transcript" }
     );
-
+    
     const questions = await getQuestionsFromTranscript(
       transcript,
       chapter.name
@@ -76,8 +77,8 @@ export async function POST(req: Request, res: Response) {
         summary: summary,
       },
     });
-    // return NextResponse.json({ summary, questions });
-    return NextResponse.json({ success: true });
+    
+     return NextResponse.json({ success: true });
   } catch (error) {
     if (error instanceof z.ZodError) {
       return NextResponse.json(

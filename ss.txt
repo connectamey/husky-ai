@@ -1,0 +1,9 @@
+GOOGLE_CLIENT_ID='1056119461395-hpdctpurelf0aoapc7l2r1sn94dnbve9.apps.googleusercontent.com'
+GOOGLE_CLIENT_SECRET='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'
+YOUTUBE_API_KEY = 'AIzaSyDF46IyZYwPlb6ZBxAD6-IuLxVNYsbTIwQ'
+
+
+GOOGLE_CLIENT_ID='579902192664-k7c38jd4npo37u479khse73ett8l8fgv.apps.googleusercontent.com'
+GOOGLE_CLIENT_SECRET='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'
+YOUTUBE_API_KEY = 'AIzaSyBkiLAtaav2ecI7Vvgs-iBeeMs_v3XndD8'
+

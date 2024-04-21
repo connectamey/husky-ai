@@ -1,6 +1,10 @@
 import axios from "axios";
 import { YoutubeTranscript } from "youtube-transcript";
 import { strict_output} from "./gpt";
+import { google } from 'googleapis';
+import { youtube_v3 } from 'googleapis';
+
+
 
 export async function searchYoutube(searchQuery: string) {
   // hello world => hello+world
@@ -29,16 +33,24 @@ export async function getTranscript(videoId: string) {
     for (let t of transcript_arr) {
       transcript += t.text + " ";
     }
+    console.log("The transcript is " + transcript);
     return transcript.replaceAll("\n", "");
   } catch (error) {
     return "";
   }
 }
 
+
+
+
+
+
+
 export async function getQuestionsFromTranscript(
   transcript: string,
   course_title: string
 ) {
+  
   type Question = {
     question: string;
     answer: string;
@@ -47,9 +59,9 @@ export async function getQuestionsFromTranscript(
     option3: string;
   };
   const questions: Question[] = await strict_output(
-    "You are a helpful AI that is able to generate mcq questions and answers, the length of each answer should not be more than 15 words. Produce questions. Don't mention it is fetched from a transcript. Make sure I dont see this error - Unexpected end of JSON input. Make sure you return the output as a JSON array always. Array should have atleast two questions. Make sure you don't use comma after the last key value pair.",
+    "You are a helpful AI that is able to generate mcq questions and answers, the length of each answer should not be more than 15 words. Produce questions. Don't mention it is fetched from a transcript. Make sure I dont see this error - Unexpected end of JSON input. Make sure you return the output as a JSON array always. Array should have atleast two questions. Make sure you don't use comma after the last key value pair.Questions should be relevant to the chapter title",
     new Array(5).fill(
-      `You are to generate a random hard mcq question about ${course_title} with context of the following transcript: ${transcript} . Make sure you return the output as a JSON array always. Don't mention it is fetched from a transcript. You are generating quiz questions for a viewer watching the video. Make sure I dont see this error - Unexpected end of JSON input. Adhere to the format needed. Array should have atleast two questions. Make sure you don't use comma after the last key value pair. each object should have five properties provided. question, answer, option1, option2, option3`
+      `You are to generate a random hard mcq question about ${course_title} with context of the following transcript: ${transcript} . Make sure you return the output as a JSON array always. Don't mention it is fetched from a transcript. You are generating quiz questions for a viewer learning about ${course_title}. Adhere to the format needed. Array should have atleast two questions. Make sure you don't use comma after the last key value pair. each object should have five properties provided. question, answer, option1, option2, option3`
     ),
     {
       question: "question",
@@ -61,3 +73,13 @@ export async function getQuestionsFromTranscript(
   );
   return questions;
 }
+
+
+
+
+
+
+
+
+
+

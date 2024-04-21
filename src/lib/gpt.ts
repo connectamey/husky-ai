@@ -25,7 +25,6 @@ export async function strict_output(
   const list_input: boolean = Array.isArray(user_prompt);
   const dynamic_elements: boolean = /<.*?>/.test(JSON.stringify(output_format));
   const list_output: boolean = /\[.*?\]/.test(JSON.stringify(output_format));
-
   let error_msg: string = "";
 
   for (let i = 0; i < num_tries; i++) {

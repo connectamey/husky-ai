@@ -1,6 +1,9 @@
+
+
 import CourseSideBar from "@/components/CourseSideBar";
 import MainVideoSummary from "@/components/MainVideoSummary";
 import QuizCards from "@/components/QuizCards";
+import Chatbot from "@/components/Chatbot";
 import { prisma } from "@/lib/db";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import Link from "next/link";
@@ -15,6 +18,14 @@ type Props = {
 
 const CoursePage = async ({ params: { slug } }: Props) => {
   const [courseId, unitIndexParam, chapterIndexParam] = slug;
+  const courseName = await prisma.course.findUnique({
+    where: {
+      id: courseId,
+    },
+    select: {
+      name: true,  // Select only the name of the course
+    },
+  });
   const course = await prisma.course.findUnique({
     where: { id: courseId },
     include: {
@@ -55,7 +66,16 @@ const CoursePage = async ({ params: { slug } }: Props) => {
               unit={unit}
               unitIndex={unitIndex}
             />
-            <QuizCards chapter={chapter} />
+            <div className="flex flex-col">
+              <QuizCards chapter={chapter} />
+              <div className="mt-4">
+                <Chatbot courseName={courseName?.name}/>
+              </div>
+              
+            </div>
+            
+            
+            
           </div>
 
           <div className="flex-[1] h-[1px] mt-4 text-gray-500 bg-gray-500" />
