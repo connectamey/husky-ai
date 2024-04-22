@@ -77,8 +77,8 @@ export async function POST(req: Request, res: Response) {
         summary: summary,
       },
     });
-    
-     return NextResponse.json({ success: true });
+     return NextResponse.json({transcript})
+     //return NextResponse.json({ success: true });
   } catch (error) {
     if (error instanceof z.ZodError) {
       return NextResponse.json(

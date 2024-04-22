@@ -1,6 +1,9 @@
+
+
+
 // "use client"
 // import "../app/chatbot.css";
-// import { useState } from "react";
+// import { useState, useEffect } from "react";
 // import "@chatscope/chat-ui-kit-styles/dist/default/styles.min.css";
 // import {
 //   MainContainer,
@@ -12,21 +15,22 @@
 // } from "@chatscope/chat-ui-kit-react";
 
 // const API_KEY = "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";
-// const systemMessage = {
-//   role: "system",
-//   content:
-//     "Explain things like you're talking to a software professional with 2 years of experience.",
-// };
 
-// function App() {
-//   const [messages, setMessages] = useState([
-//     {
-//       message: "Hello, I'm ChatGPT! Ask me anything!",
-//       sentTime: "just now",
-//       sender: "ChatGPT",
-//     },
-//   ]);
+// function App({ courseName }) {
+//   const [messages, setMessages] = useState([]);
 //   const [isTyping, setIsTyping] = useState(false);
+
+//   useEffect(() => {
+//     // Initialize with a course-specific greeting when the component mounts or courseName changes
+//     setMessages([
+//       {
+//         message: `Hello, I can assist you for this course! I'm ready to answer any questions about ${courseName}. Ask me anything about it!`,
+//         sentTime: "just now",
+//         sender: "ChatGPT",
+//       }
+//     ]);
+//   }, [courseName]);
+
 //   const handleSend = async (message) => {
 //     const newMessage = {
 //       message,
@@ -40,52 +44,37 @@
 //   };
 
 //   async function processMessageToChatGPT(chatMessages) {
-//     // messages is an array of messages
-//     // Format messages for chatGPT API
-//     // API is expecting objects in format of { role: "user" or "assistant", "content": "message here"}
-//     // So we need to reformat
+//     let apiMessages = chatMessages.map(messageObject => ({
+//       role: messageObject.sender === "ChatGPT" ? "assistant" : "user",
+//       content: messageObject.message
+//     }));
 
-//     let apiMessages = chatMessages.map((messageObject) => {
-//       let role = "";
-//       if (messageObject.sender === "ChatGPT") {
-//         role = "assistant";
-//       } else {
-//         role = "user";
-//       }
-//       return { role: role, content: messageObject.message };
-//     });
-
-//     // Get the request body set up with the model we plan to use
-//     // and the messages which we formatted above. We add a system message in the front to'
-//     // determine how we want chatGPT to act.
 //     const apiRequestBody = {
 //       model: "gpt-3.5-turbo",
 //       messages: [
-//         systemMessage, // The system message DEFINES the logic of our chatGPT
-//         ...apiMessages, // The messages from our chat with ChatGPT
+//         {
+//           role: "system",
+//           content: `Explain things like you're talking to a student who is eager to learn about ${courseName}.Explain in a beginner friendly way. If the question is not related to ${courseName} , then reply You have asked unrelated question. Please ask question related to ${courseName}`,
+//         },
+//         ...apiMessages,
 //       ],
 //     };
 
 //     await fetch("https://api.openai.com/v1/chat/completions", {
 //       method: "POST",
 //       headers: {
-//         Authorization: "Bearer " + API_KEY,
+//         Authorization: `Bearer ${API_KEY}`,
 //         "Content-Type": "application/json",
 //       },
 //       body: JSON.stringify(apiRequestBody),
 //     })
-//       .then((data) => {
-//         return data.json();
-//       })
-//       .then((data) => {
-//         console.log(data);
-//         setMessages([
-//           ...chatMessages,
-//           {
-//             message: data.choices[0].message.content,
-//             sender: "ChatGPT",
-//           },
-//         ]);
+//       .then(data => data.json())
+//       .then(data => {
+//         const responseMessage = {
+//           message: data.choices[0].message.content,
+//           sender: "ChatGPT",
+//         };
+//         setMessages([...chatMessages, responseMessage]);
 //         setIsTyping(false);
 //       });
 //   }
@@ -97,16 +86,11 @@
 //           <ChatContainer>
 //             <MessageList
 //               scrollBehavior="smooth"
-//               typingIndicator={
-//                 isTyping ? (
-//                   <TypingIndicator content="ChatGPT is typing" />
-//                 ) : null
-//               }
+//               typingIndicator={isTyping ? <TypingIndicator content="ChatGPT is typing..." /> : null}
 //             >
-//               {messages.map((message, i) => {
-//                 console.log(message);
-//                 return <Message key={i} model={message} />;
-//               })}
+//               {messages.map((message, i) => (
+//                 <Message key={i} model={message} />
+//               ))}
 //             </MessageList>
 //             <MessageInput placeholder="Type message here" onSend={handleSend} />
 //           </ChatContainer>
@@ -119,7 +103,9 @@
 // export default App;
 
 
-"use client"
+
+
+"use client";
 import "../app/chatbot.css";
 import { useState, useEffect } from "react";
 import "@chatscope/chat-ui-kit-styles/dist/default/styles.min.css";
@@ -172,7 +158,7 @@ function App({ courseName }) {
       messages: [
         {
           role: "system",
-          content: `Explain things like you're talking to a student who is eager to learn about ${courseName}.Explain in a beginner friendly way`,
+          content: `Explain things like you're talking to a student who is eager to learn about ${courseName}. Explain in a beginner friendly way. If the question is not related to ${courseName}, then reply: You have asked an unrelated question. Please ask questions related to ${courseName}.`,
         },
         ...apiMessages,
       ],
@@ -186,15 +172,39 @@ function App({ courseName }) {
       },
       body: JSON.stringify(apiRequestBody),
     })
-      .then(data => data.json())
-      .then(data => {
-        const responseMessage = {
-          message: data.choices[0].message.content,
-          sender: "ChatGPT",
-        };
-        setMessages([...chatMessages, responseMessage]);
-        setIsTyping(false);
+    .then(data => data.json())
+    .then(data => {
+      const responseMessage = {
+        message: data.choices[0].message.content,
+        sender: "ChatGPT",
+      };
+      setMessages([...chatMessages, responseMessage]);
+      setIsTyping(false);
+      // After getting the response, call the vectorization function
+      vectorizeConversation(chatMessages.map(msg => msg.message).join(' '));
+    });
+  }
+
+  // Function to call the vectorization API
+  async function vectorizeConversation(conversationText) {
+    try {
+      const response = await fetch('/api/vectorize', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ text: conversationText })
       });
+
+      if (!response.ok) {
+        throw new Error('Failed to vectorize text');
+      }
+
+      const data = await response.json();
+      console.log('Vector:', data.vector); // You can handle the vector as needed
+    } catch (error) {
+      console.error('Error vectorizing text:', error);
+    }
   }
 
   return (
@@ -219,3 +229,5 @@ function App({ courseName }) {
 }
 
 export default App;
+
+
