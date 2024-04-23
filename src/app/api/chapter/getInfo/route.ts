@@ -13,6 +13,15 @@ const bodyParser = z.object({
   chapterId: z.string(),
 });
 
+
+// It fetches the chapter with the given id from the database using Prisma.
+// It searches for the video id associated with the chapter using the searchYoutube function.
+// It retrieves the transcript of the video using the getTranscript function.
+// It generates questions from the transcript using the getQuestionsFromTranscript function.
+// It creates a new question for each question generated in step 4 using the prisma.question.createMany function.
+// It updates the chapter with the video id and summary using the prisma.chapter.update function.
+// It returns the transcript of the video as the response.
+
 export async function POST(req: Request, res: Response) {
   try {
     const body = await req.json();
