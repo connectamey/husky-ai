@@ -1,5 +1,10 @@
 ## Husky AI Documentation
 
+### Team Members
+1. Anutej Poddaturi [ 002922161 ]
+2. Amey Bansod [ 002743117 ]
+3. Sunil Srinivaas [ 002711958 ]
+
 ### Overview
 Husky AI is a web application project leveraging Next.js for SSR (Server Side Rendering) and SSG (Static Site Generation), TailwindCSS for styling, and Prisma as an ORM (Object Relational Mapping) for database interactions. This documentation aims to provide a comprehensive guide to the project's setup, structure, and development guidelines.
 
