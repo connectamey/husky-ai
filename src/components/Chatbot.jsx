@@ -181,12 +181,14 @@ function App({ courseName }) {
       setMessages([...chatMessages, responseMessage]);
       setIsTyping(false);
       // After getting the response, call the vectorization function
-      vectorizeConversation(chatMessages.map(msg => msg.message).join(' '));
+      convertIntoVector(chatMessages.map(msg => msg.message).join(' '));
+      // vectorizeConversation(chatMessages.map(msg => msg.message).join(' '));
     });
   }
 
-  // Function to call the vectorization API
-  async function vectorizeConversation(conversationText) {
+  // Function to convert into vector
+
+  async function convertIntoVector(conversationText) {
     try {
       const response = await fetch('/api/vectorize', {
         method: 'POST',
@@ -201,11 +203,54 @@ function App({ courseName }) {
       }
 
       const data = await response.json();
-      console.log('Vector:', data.vector); // You can handle the vector as needed
+      console.log('Converted Vector:', data); // You can handle the vector as needed
+      let jsonConvertedData = data;
+      updateMetadataWithUUID(jsonConvertedData);
+      console.log("converted json ", jsonConvertedData);
+      saveIntoVectorDB(jsonConvertedData);
     } catch (error) {
       console.error('Error vectorizing text:', error);
     }
   }
+
+  async function saveIntoVectorDB(modifiedText) {
+    try {
+      const response = await fetch('/api/upsertVector', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(modifiedText)
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to vectorize text');
+      }
+
+      const data = await response.json();
+      console.log("storage response ", data);
+    } catch (error) {
+      console.error('Error vectorizing text:', error);
+    }
+  }
+
+  function uuidv4() {
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+        var r = Math.random() * 16 | 0,
+            v = c == 'x' ? r : (r & 0x3 | 0x8);
+        return v.toString(16);
+    });
+}
+  function updateMetadataWithUUID(data) {
+    data.vectors.forEach(vector => {
+        // Check if 'conversation' key exists
+        if(vector.metadata.conversation) {
+            vector.metadata.conversation = uuidv4(); // Add 'uuid' key
+        }
+    });
+}
+
+
 
   return (
     <div className="App">
