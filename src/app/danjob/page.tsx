@@ -49,9 +49,9 @@ const DanjobPage = async (props: Props) => {
     },
   });
   return (
-    <div style={containerStyle}className="py-8 mx-auto max-w-7xl">
-      <h1 style={{ marginBottom: '0.5em' }} className="text-3xl font-bold">DanJob Subscription</h1>
-      <div style={messageBoxStyle} >
+    <div style={{height:"100%", width: "100%"}}className="py-8 mx-auto max-w-7xl">
+      <h1 className="text-3xl font-bold">DanJob Subscription</h1>
+      <div >
         {isPro ? proMessage : freeMessage}
       </div>
       <SubscriptionButton isPro={isPro} />
