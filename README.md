@@ -11,6 +11,11 @@ The application is built based on the following technologies.
 2. Open.ai whisper api
 3. Vertex api
 4. Planetscale 
+5. Pinecone
+6. PlanetScale
+7. Langchain
+8. Prisma
+9. zod
 
 ### Getting Started
 
