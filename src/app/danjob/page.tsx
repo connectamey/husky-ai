@@ -1,4 +1,3 @@
-import { prisma } from "@/lib/db";
 import React from "react";
 import { checkSubscription } from "@/lib/subscription";
 import SubscriptionButton from "@/components/SubscriptionButton";
