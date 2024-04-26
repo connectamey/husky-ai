@@ -28,7 +28,7 @@ const DanjobPage = async (props: Props) => {
       <div >
         {isPro ? proMessage : freeMessage}
       </div>
-      <SubscriptionButton isPro={isPro} />
+      {/*<SubscriptionButton isPro={isPro} />*/}
     </div>
   );
 };
