@@ -1,4 +1,3 @@
-import GalleryCourseCard from "@/components/GalleryCourseCard";
 import { prisma } from "@/lib/db";
 import React from "react";
 import { checkSubscription } from "@/lib/subscription";
@@ -8,23 +7,6 @@ type Props = {};
 
 const DanjobPage = async (props: Props) => {
   const isPro = await checkSubscription();
-  const containerStyle: React.CSSProperties = {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'flex-start',
-    height: '100vh',
-    padding: '150px',
-  };
-
-  const messageBoxStyle: React.CSSProperties = {
-    padding: '25px',
-    borderRadius: '4px',
-    border: '1px solid #ddd',
-    maxWidth: '600px',
-    textAlign: 'center',
-    lineHeight: 1.6,
-  };
 
   const proMessage = (
     <>
@@ -41,15 +23,8 @@ const DanjobPage = async (props: Props) => {
     </>
   );
 
-  const courses = await prisma.course.findMany({
-    include: {
-      units: {
-        include: { chapters: true },
-      },
-    },
-  });
   return (
-    <div style={{height:"100%", width: "100%"}}className="py-8 mx-auto max-w-7xl">
+    <div style={{height:"100%", width: "100%"}} className="py-8 mx-auto max-w-7xl">
       <h1 className="text-3xl font-bold">DanJob Subscription</h1>
       <div >
         {isPro ? proMessage : freeMessage}
