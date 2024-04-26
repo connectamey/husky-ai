@@ -103,7 +103,7 @@
 // export default App;
 
 
-
+//@ts-nocheck
 
 "use client";
 import "../app/chatbot.css";
