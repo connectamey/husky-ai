@@ -66,7 +66,7 @@ const CoursePage = async ({ params: { slug } }: Props) => {
               unit={unit}
               unitIndex={unitIndex}
             />
-            <div className="flex flex-col">
+            <div className="flex flex-col" style={{width: "500px"}}>
               <QuizCards chapter={chapter} />
               <div className="mt-4">
                 <Chatbot courseName={courseName?.name}/>

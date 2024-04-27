@@ -253,9 +253,9 @@ function App({ courseName }) {
 
 
   return (
-    <div className="App" style={{ display:"flex", height: "500px", width: "800px", padding:" 0px 25px" , justifyContent:"flex-start", flexDirection:"column", gap:"15px", alignContent:"flex-start"}}>
+    <div className="App" style={{ display:"flex", height: "500px", width: "500px", padding:" 0px 25px" , justifyContent:"flex-start", flexDirection:"column", gap:"15px", alignContent:"flex-start"}}>
     <h1 className="text-2xl font-bold">ChatBot</h1>
-      <div style={{ position: "relative", height: "400px", width: "600px", alignContent: "center", borderRadius: "5px", alignSelf : "center", justifySelf:"center" }}>
+      <div style={{ position: "relative", height: "400px",  alignContent: "center", borderRadius: "5px", alignSelf : "center", justifySelf:"center" }}>
         <MainContainer>
           <ChatContainer>
             <MessageList
