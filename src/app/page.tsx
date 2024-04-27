@@ -50,28 +50,27 @@ export default function Home() {
       </h1>
       <p
         style={{
-          
-          maxWidth: "1000px",
-          textAlign: "center",
+          maxWidth: "800px",
+          textAlign: "left",
           zIndex: 1,
         }}
       >
-        The integration of artificial intelligence into education is
-        transforming the landscape of learning. AI-driven platforms can
-        personalize the learning experience, provide adaptive feedback, and
-        create interactive learning environments that engage students in new and
-        exciting ways. Additionally, AI tools can analyze vast amounts of
-        educational data, helping educators identify learning patterns and
-        tailor instruction to individual needs. This enables a more inclusive
-        educational approach, accommodating diverse learning styles and
-        abilities. Furthermore, AI can automate administrative tasks, allowing
-        teachers to focus more on teaching and less on paperwork. The role of AI in
-        creating virtual simulations and educational games also presents
-        innovative methods for complex problem-solving and critical thinking,
-        making learning more immersive and effective. As AI technology continues
-        to evolve, its potential to revolutionize education and foster a more
-        dynamic, responsive, and student-centered learning environment grows
-        increasingly evident.
+        "Revolutionize learning with AI: Personalize education, engage
+        dynamically, and empower teachers for a future of immersive, effective
+        education!"
+        <br></br>
+        <br></br>
+        
+          1. Write name of the topic you want to learn.
+          <br></br>
+          2. Click let's go to see your syllabus
+          <br></br>
+          3. If syllabus suits you, go ahead and generate your videos
+          <br></br>
+          4. Start leaarning and answer the questions
+          <br></br>
+          5. Ask our chatbot, your queries
+        
       </p>
       <Link href="/create">
         <Button style={{ fontSize: "20px", padding: "10px 10px", zIndex: 1 }}>
