@@ -3,7 +3,17 @@
 ## Husky AI Documentation
 
 ### Overview
-Husky AI is a web application project leveraging Next.js for SSR (Server Side Rendering) and SSG (Static Site Generation), TailwindCSS for styling, and Prisma as an ORM (Object Relational Mapping) for database interactions. This documentation aims to provide a comprehensive guide to the project's setup, structure, and development guidelines.
+There are now many ways to understand a topic because data and courses are developed quickly these days. Considering that the user's required level of knowledge is not specified by a curated list. In order to address this, we developed an AI web application that responds to user prompts about the courses and subjects they wish to learn. It then creates a personalized course that includes YouTube videos for support, a concept checker, and a chatbot to help with any concepts that may have been overlooked during one of the units. 
+
+When students wish to apply for jobs and are prompted to upload a cover letter during the application process, this presents another challenge. We developed a tool that can automatically generate a unique cover letter and a linked in coffee message based on the resume and job description that are attached, saving time and effort over producing a fresh cover letter for each application. The student's application process for jobs is streamlined as a result.
+ 
+Our Husky AI Platform majorly provides assistance with three parts of a students or a learners career:
+1. The user can curate a custom course by prompting the topic and the units they want to learn
+2. Go through the video lectures from the curated course and take a quiz that is curated based on the topic
+3. Interact with a chatbot to check with any questions you have
+4. Curate a custom cover letter and linkedin coffee message to interact and connect with people on various social platforms.
+
+YT Link : https://www.youtube.com/watch?v=nwFuxuBZW-o
 
 ### Technologies used:
 
