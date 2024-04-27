@@ -1,3 +1,5 @@
+![Husky AI](https://github.com/connectamey/husky-ai/blob/main/Husky_AI.jpg)
+
 ## Husky AI Documentation
 
 ### Overview
